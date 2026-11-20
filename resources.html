@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Resources Library — Joining Generations</title>
+  <meta name="description" content="Free guides, toolkits, and stories on building meaningful intergenerational programs and combating ageism." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ NEWSLETTER POP-UP ============ -->
+  <div class="modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" hidden>
+    <div class="modal__card">
+      <div class="modal__image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&h=1100&fit=crop&auto=format"
+             alt="A diverse group of friends enjoying time together outdoors" />
+        <div class="modal__tint"></div>
+        <div class="modal__caption">Ideas, stories and practical tools for stronger communities.</div>
+      </div>
+
+      <div class="modal__body">
+        <button class="modal__close" id="newsletter-close" aria-label="Close newsletter">
+          <svg class="icon" width="21" height="21"><use href="#i-x"/></svg>
+        </button>
+
+        <div id="newsletter-form-view">
+          <p class="eyebrow eyebrow--rust">Stay connected</p>
+          <h2 class="modal__title" id="newsletter-title">Good things grow when shared.</h2>
+          <p class="modal__text">Get thoughtful updates, upcoming events and useful resources in your inbox once a month.</p>
+          <form id="newsletter-form" class="modal__form">
+            <label for="newsletter-email" class="label">Email address</label>
+            <div class="modal__field">
+              <input id="newsletter-email" type="email" required placeholder="you@example.com" />
+              <button type="submit" aria-label="Subscribe"><svg class="icon" width="24" height="24"><use href="#i-arrow-right"/></svg></button>
+            </div>
+            <p class="modal__fine">No noise, no spam. Unsubscribe whenever you like.</p>
+          </form>
+        </div>
+
+        <div id="newsletter-thanks-view" class="modal__thanks" hidden>
+          <span class="modal__tick"><svg class="icon" width="24" height="24"><use href="#i-check"/></svg></span>
+          <h2 class="modal__title modal__title--sm">You’re on the list.</h2>
+          <p class="modal__text">Thanks for joining us. Look out for a welcome note in your inbox.</p>
+          <button class="link-underline" id="newsletter-done" type="button">Continue exploring</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="site-header__bar container-wide">
+      <a href="index.html" class="brand" aria-label="Joining Generations home">
+        <span class="brand__mark">
+          <span class="brand__teal"></span>
+          <span class="brand__rust"></span>
+          <span class="brand__cream"></span>
+        </span>
+        <span class="brand__name">Joining<br />Generations</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="about.html">About us</a>
+        <a href="programs.html">Programs</a>
+        <a href="events.html">Events</a>
+        <a href="work-with-us.html">Training</a>
+        <a href="work-with-us.html">Consulting</a>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="btn-outline-light" data-open-newsletter>Join our newsletter</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="icon icon-menu" width="24" height="24"><use href="#i-menu"/></svg>
+          <svg class="icon icon-close" width="24" height="24"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="about.html">About us <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="programs.html">Programs <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="events.html">Events <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Training <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Consulting <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="resources.html">Resources <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="index.html#contact">Contact <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html#resources" class="back-link"><svg class="icon" width="16" height="16"><use href="#i-arrow-left"/></svg> Back to home</a>
+        <p class="eyebrow eyebrow--sky">Open resources</p>
+        <h1 class="page-hero__title">Take it with you: Guides, toolkits &amp; stories.</h1>
+        <p class="page-hero__lead">Practical knowledge for educators, aged care practitioners, families, and community builders working to connect generations.</p>
+      </div>
+    </section>
+
+    <!-- ============ RESOURCE ARTICLES ============ -->
+    <section class="section section--cream">
+      <div class="container">
+
+        <!-- Resource 01 -->
+        <article id="resource-01" class="resource-full">
+          <div class="resource-full__header">
+            <span class="resource__type">Guide</span>
+            <span class="resource__n">Resource 01</span>
+          </div>
+          <h2 class="resource-full__title">What is an Intergenerational Program?</h2>
+          <div class="prose">
+            <p>At the heart of successful intergenerational programs is the development of positive, ongoing relationships between younger and older people. Rather than a one-off visit or performance, authentic intergenerational practice creates shared spaces where both age groups participate as equals.</p>
+            <h3>Core elements of effective programs</h3>
+            <ul>
+              <li><strong>Reciprocity:</strong> Activities are chosen so both older adults and children give and receive attention, knowledge, and joy.</li>
+              <li><strong>Consistency:</strong> Regular sessions allow familiarity, trust, and genuine friendships to blossom over time.</li>
+              <li><strong>Intentional Environment:</strong> Spaces are set up for eye-level interaction, comfort, and sensory accessibility.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Resource 02 -->
+        <article id="resource-02" class="resource-full resource-full--rust">
+          <div class="resource-full__header">
+            <span class="resource__type">Toolkit</span>
+            <span class="resource__n">Resource 02</span>
+          </div>
+          <h2 class="resource-full__title">Benefits &amp; Practical Impact</h2>
+          <div class="prose">
+            <p>By bridging the generational gap, our programs strengthen community cohesion and contribute to stronger, better-connected communities, increasing engagement and breaking down age-related stereotypes.</p>
+            <h3>Evidence-based outcomes</h3>
+            <ul>
+              <li><strong>For Older Adults:</strong> Elevated mood, cognitive stimulation, increased physical movement, and a renewed sense of community role.</li>
+              <li><strong>For Children (0–5):</strong> Rich language exposure, patience, empathy towards people with diverse abilities, and comfort around ageing.</li>
+              <li><strong>For Caregivers &amp; Staff:</strong> Supportive peer networks, shared joy at work, and stronger ties between local care homes and families.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Resource 03 -->
+        <article id="resource-03" class="resource-full resource-full--gold">
+          <div class="resource-full__header">
+            <span class="resource__type">Story</span>
+            <span class="resource__n">Resource 03</span>
+          </div>
+          <h2 class="resource-full__title">Creating #AWorld4AllAges</h2>
+          <div class="prose">
+            <p>We are a proud supporter of the World Health Organisation’s <strong>#AWorld4AllAges</strong>—a global campaign to combat ageism and foster solidarity between generations.</p>
+            <p>Ageism affects both younger and older people when society separates us by age. Through everyday moments—reading a picture book together, passing a shaker during a song, or sharing morning tea—intergenerational programs replace assumptions with real human connection.</p>
+            <div style="margin-top: 28px;">
+              <a href="work-with-us.html" class="btn btn--rust">Partner with us on a program <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__ack">
+          <p class="eyebrow eyebrow--sky">Acknowledgement of Country</p>
+          <p>We acknowledge the Traditional Custodians of the lands and waters where we live, learn and work. We pay respect to Elders past and present, and recognise the enduring connection of Aboriginal and Torres Strait Islander peoples to Country.</p>
+        </div>
+        <div class="footer__news">
+          <button class="link-underline-light" data-open-newsletter>Join our newsletter <svg class="icon" width="16" height="16"><use href="#i-mail"/></svg></button>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Joining Generations. Not-for-profit, for community.</p>
+        <div class="footer__links"><a href="#">Privacy</a><a href="#">Accessibility</a><a href="#">LinkedIn</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events — Joining Generations</title>
+  <meta name="description" content="Upcoming intergenerational workshops, story-time sessions, and community gatherings." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ NEWSLETTER POP-UP ============ -->
+  <div class="modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" hidden>
+    <div class="modal__card">
+      <div class="modal__image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&h=1100&fit=crop&auto=format"
+             alt="A diverse group of friends enjoying time together outdoors" />
+        <div class="modal__tint"></div>
+        <div class="modal__caption">Ideas, stories and practical tools for stronger communities.</div>
+      </div>
+
+      <div class="modal__body">
+        <button class="modal__close" id="newsletter-close" aria-label="Close newsletter">
+          <svg class="icon" width="21" height="21"><use href="#i-x"/></svg>
+        </button>
+
+        <div id="newsletter-form-view">
+          <p class="eyebrow eyebrow--rust">Stay connected</p>
+          <h2 class="modal__title" id="newsletter-title">Good things grow when shared.</h2>
+          <p class="modal__text">Get thoughtful updates, upcoming events and useful resources in your inbox once a month.</p>
+          <form id="newsletter-form" class="modal__form">
+            <label for="newsletter-email" class="label">Email address</label>
+            <div class="modal__field">
+              <input id="newsletter-email" type="email" required placeholder="you@example.com" />
+              <button type="submit" aria-label="Subscribe"><svg class="icon" width="24" height="24"><use href="#i-arrow-right"/></svg></button>
+            </div>
+            <p class="modal__fine">No noise, no spam. Unsubscribe whenever you like.</p>
+          </form>
+        </div>
+
+        <div id="newsletter-thanks-view" class="modal__thanks" hidden>
+          <span class="modal__tick"><svg class="icon" width="24" height="24"><use href="#i-check"/></svg></span>
+          <h2 class="modal__title modal__title--sm">You’re on the list.</h2>
+          <p class="modal__text">Thanks for joining us. Look out for a welcome note in your inbox.</p>
+          <button class="link-underline" id="newsletter-done" type="button">Continue exploring</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="site-header__bar container-wide">
+      <a href="index.html" class="brand" aria-label="Joining Generations home">
+        <span class="brand__mark">
+          <span class="brand__teal"></span>
+          <span class="brand__rust"></span>
+          <span class="brand__cream"></span>
+        </span>
+        <span class="brand__name">Joining<br />Generations</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="about.html">About us</a>
+        <a href="programs.html">Programs</a>
+        <a href="events.html">Events</a>
+        <a href="work-with-us.html">Training</a>
+        <a href="work-with-us.html">Consulting</a>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="btn-outline-light" data-open-newsletter>Join our newsletter</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="icon icon-menu" width="24" height="24"><use href="#i-menu"/></svg>
+          <svg class="icon icon-close" width="24" height="24"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="about.html">About us <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="programs.html">Programs <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="events.html">Events <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Training <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Consulting <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="resources.html">Resources <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="index.html#contact">Contact <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html#events" class="back-link"><svg class="icon" width="16" height="16"><use href="#i-arrow-left"/></svg> Back to home</a>
+        <p class="eyebrow eyebrow--sky">Come together</p>
+        <h1 class="page-hero__title">What’s on at Joining Generations.</h1>
+        <p class="page-hero__lead">Join us for upcoming online workshops for practitioners and in-person intergenerational play &amp; story-time gatherings across Melbourne.</p>
+      </div>
+    </section>
+
+    <!-- ============ ALL EVENTS ============ -->
+    <section class="section section--cream">
+      <div class="container">
+
+        <!-- Event 1 -->
+        <article id="event-intro-practice" class="event-detail">
+          <div class="event__date">
+            <strong>20</strong><span>Nov</span>
+          </div>
+          <div>
+            <p class="event__type">Online workshop</p>
+            <h2 class="event__title" style="font-size: 28px;">Introduction to Intergenerational Practice</h2>
+            <div class="event-detail__meta">
+              <span><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg> 4:00 pm–5:30 pm AEDT</span>
+              <span><svg class="icon" width="14" height="14"><use href="#i-map-pin"/></svg> Live via Zoom</span>
+            </div>
+            <p class="event-detail__desc">An interactive 90-minute webinar for aged care lifestyle coordinators, early childhood educators, and community workers. Learn the core principles of planning safe, joyful, and mutually beneficial intergenerational sessions.</p>
+          </div>
+          <a href="index.html#contact" class="btn btn--rust">Register interest <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+        </article>
+
+        <!-- Event 2 -->
+        <article id="event-story-time" class="event-detail">
+          <div class="event__date">
+            <strong>27</strong><span>Nov</span>
+          </div>
+          <div>
+            <p class="event__type">In person</p>
+            <h2 class="event__title" style="font-size: 28px;">Intergenerational Story-time</h2>
+            <div class="event-detail__meta">
+              <span><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg> 10:30–11:30 am</span>
+              <span><svg class="icon" width="14" height="14"><use href="#i-map-pin"/></svg> Melbourne, VIC</span>
+            </div>
+            <p class="event-detail__desc">Bring your little ones (aged 0–5) for a heart-warming morning of shared stories, songs, and simple craft alongside local aged care residents. Morning tea provided for caregivers, children, and residents.</p>
+          </div>
+          <a href="index.html#contact" class="btn btn--rust">Book a spot <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+        </article>
+
+        <!-- Event 3 -->
+        <article id="event-music-morning" class="event-detail">
+          <div class="event__date">
+            <strong>05</strong><span>Dec</span>
+          </div>
+          <div>
+            <p class="event__type">In person</p>
+            <h2 class="event__title" style="font-size: 28px;">Summer Music &amp; Movement Gathering</h2>
+            <div class="event-detail__meta">
+              <span><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg> 10:00–11:00 am</span>
+              <span><svg class="icon" width="14" height="14"><use href="#i-map-pin"/></svg> Inner North Aged Care, Melbourne</span>
+            </div>
+            <p class="event-detail__desc">Celebrate the end of the year with live acoustic music, percussion play, parachute games, and shared celebration across generations.</p>
+          </div>
+          <a href="index.html#contact" class="btn btn--rust">Book a spot <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+        </article>
+
+        <!-- Event 4 -->
+        <article id="event-program-design" class="event-detail">
+          <div class="event__date">
+            <strong>12</strong><span>Dec</span>
+          </div>
+          <div>
+            <p class="event__type">Practitioner Masterclass</p>
+            <h2 class="event__title" style="font-size: 28px;">Designing Sustainable Partnerships for 2026</h2>
+            <div class="event-detail__meta">
+              <span><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg> 1:00 pm–3:00 pm AEDT</span>
+              <span><svg class="icon" width="14" height="14"><use href="#i-map-pin"/></svg> Hybrid (Melbourne &amp; Online)</span>
+            </div>
+            <p class="event-detail__desc">A practical planning workshop for organisations preparing to launch or expand an intergenerational program in the new year. Includes templates, risk checklists, and partner-matching guidance.</p>
+          </div>
+          <a href="work-with-us.html" class="btn btn--ink" style="margin-top:0">Enquire now <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__ack">
+          <p class="eyebrow eyebrow--sky">Acknowledgement of Country</p>
+          <p>We acknowledge the Traditional Custodians of the lands and waters where we live, learn and work. We pay respect to Elders past and present, and recognise the enduring connection of Aboriginal and Torres Strait Islander peoples to Country.</p>
+        </div>
+        <div class="footer__news">
+          <button class="link-underline-light" data-open-newsletter>Join our newsletter <svg class="icon" width="16" height="16"><use href="#i-mail"/></svg></button>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Joining Generations. Not-for-profit, for community.</p>
+        <div class="footer__links"><a href="#">Privacy</a><a href="#">Accessibility</a><a href="#">LinkedIn</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

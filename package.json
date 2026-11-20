@@ -1,0 +1,8 @@
+{
+  "name": "joining-generations",
+  "version": "1.0.0",
+  "description": "Joining Generations static site and local server",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

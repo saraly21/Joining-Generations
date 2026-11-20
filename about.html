@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Joining Generations</title>
+  <meta name="description" content="Learn about Joining Generations, our mission to combat loneliness through intergenerational connection in Melbourne." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ NEWSLETTER POP-UP ============ -->
+  <div class="modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" hidden>
+    <div class="modal__card">
+      <div class="modal__image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&h=1100&fit=crop&auto=format"
+             alt="A diverse group of friends enjoying time together outdoors" />
+        <div class="modal__tint"></div>
+        <div class="modal__caption">Ideas, stories and practical tools for stronger communities.</div>
+      </div>
+
+      <div class="modal__body">
+        <button class="modal__close" id="newsletter-close" aria-label="Close newsletter">
+          <svg class="icon" width="21" height="21"><use href="#i-x"/></svg>
+        </button>
+
+        <div id="newsletter-form-view">
+          <p class="eyebrow eyebrow--rust">Stay connected</p>
+          <h2 class="modal__title" id="newsletter-title">Good things grow when shared.</h2>
+          <p class="modal__text">Get thoughtful updates, upcoming events and useful resources in your inbox once a month.</p>
+          <form id="newsletter-form" class="modal__form">
+            <label for="newsletter-email" class="label">Email address</label>
+            <div class="modal__field">
+              <input id="newsletter-email" type="email" required placeholder="you@example.com" />
+              <button type="submit" aria-label="Subscribe"><svg class="icon" width="24" height="24"><use href="#i-arrow-right"/></svg></button>
+            </div>
+            <p class="modal__fine">No noise, no spam. Unsubscribe whenever you like.</p>
+          </form>
+        </div>
+
+        <div id="newsletter-thanks-view" class="modal__thanks" hidden>
+          <span class="modal__tick"><svg class="icon" width="24" height="24"><use href="#i-check"/></svg></span>
+          <h2 class="modal__title modal__title--sm">You’re on the list.</h2>
+          <p class="modal__text">Thanks for joining us. Look out for a welcome note in your inbox.</p>
+          <button class="link-underline" id="newsletter-done" type="button">Continue exploring</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="site-header__bar container-wide">
+      <a href="index.html" class="brand" aria-label="Joining Generations home">
+        <span class="brand__mark">
+          <span class="brand__teal"></span>
+          <span class="brand__rust"></span>
+          <span class="brand__cream"></span>
+        </span>
+        <span class="brand__name">Joining<br />Generations</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="about.html">About us</a>
+        <a href="programs.html">Programs</a>
+        <a href="events.html">Events</a>
+        <a href="work-with-us.html">Training</a>
+        <a href="work-with-us.html">Consulting</a>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="btn-outline-light" data-open-newsletter>Join our newsletter</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="icon icon-menu" width="24" height="24"><use href="#i-menu"/></svg>
+          <svg class="icon icon-close" width="24" height="24"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="about.html">About us <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="programs.html">Programs <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="events.html">Events <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Training <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="work-with-us.html">Consulting <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="resources.html">Resources <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+      <a href="index.html#contact">Contact <svg class="icon" width="16" height="16"><use href="#i-chevron-right"/></svg></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html" class="back-link"><svg class="icon" width="16" height="16"><use href="#i-arrow-left"/></svg> Back to home</a>
+        <p class="eyebrow eyebrow--sky">About Us</p>
+        <h1 class="page-hero__title">Building friendship and belonging across the ages.</h1>
+        <p class="page-hero__lead">We are a Melbourne-based social enterprise bringing younger and older generations together through play, music, art, stories, and purposeful community practice.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTENT ============ -->
+    <section class="section section--cream">
+      <div class="container">
+        <div class="subpage-block">
+          <div>
+            <p class="eyebrow eyebrow--rust">Our Mission</p>
+            <h2 class="h2 h2--xl h2--ink">Recreating natural intergenerational communities</h2>
+          </div>
+          <div class="prose">
+            <p>In a society that is increasingly age-segregated and where loneliness has become an epidemic, we believe that intergenerational relationships offer a powerful antidote. Historically, people of all ages lived, learned, and worked side by side—sharing wisdom, curiosity, care, and joy every day.</p>
+            <p>Joining Generations exists to rebuild those bridges. By partnering with aged care homes, early learning services, local councils, and community organisations across Melbourne and beyond, we design and facilitate meaningful shared experiences that enrich the lives of both older adults and young children.</p>
+          </div>
+        </div>
+
+        <div class="subpage-block">
+          <div>
+            <p class="eyebrow eyebrow--teal">Our Values</p>
+            <h2 class="h2 h2--xl h2--ink">What guides our practice</h2>
+          </div>
+          <div>
+            <div class="cards-3" style="margin-top:0">
+              <article class="info-card">
+                <div>
+                  <p class="eyebrow eyebrow--teal">01</p>
+                  <h3 class="info-card__title">Mutual Benefit</h3>
+                </div>
+                <p class="info-card__text">Every session is intentionally designed so both older residents and young children feel valued, heard, and engaged as active participants.</p>
+              </article>
+              <article class="info-card info-card--rust">
+                <div>
+                  <p class="eyebrow eyebrow--rust">02</p>
+                  <h3 class="info-card__title">Joy &amp; Playfulness</h3>
+                </div>
+                <p class="info-card__text">Connection flourishes through shared laughter, music, gentle movement, stories, and creative exploration—without pressure or expectation.</p>
+              </article>
+              <article class="info-card info-card--gold">
+                <div>
+                  <p class="eyebrow eyebrow--rust">03</p>
+                  <h3 class="info-card__title">Dignity &amp; Inclusion</h3>
+                </div>
+                <p class="info-card__text">We honour the lived experience of every elder and the wonder of every child, actively challenging ageism in all its forms.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="subpage-block">
+          <div>
+            <p class="eyebrow eyebrow--rust">Our Impact</p>
+            <h2 class="h2 h2--xl h2--ink">Why it matters</h2>
+          </div>
+          <div class="prose">
+            <p>Research and lived experience consistently show that ongoing intergenerational programs yield transformative outcomes:</p>
+            <ul>
+              <li>Reduced feelings of isolation and loneliness among aged care residents, accompanied by increased vitality and sense of purpose.</li>
+              <li>Enhanced social-emotional development, empathy, and communication skills in young children aged 0–5.</li>
+              <li>Stronger community networks for families and caregivers who participate alongside their children.</li>
+              <li>Renewed workplace joy and connection for aged care and early childhood staff.</li>
+            </ul>
+            <div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px;">
+              <a href="programs.html" class="btn btn--rust">Explore our programs <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+              <a href="work-with-us.html" class="btn btn--ink" style="margin-top:0">Work with us <svg class="icon" width="17" height="17"><use href="#i-arrow-right"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__ack">
+          <p class="eyebrow eyebrow--sky">Acknowledgement of Country</p>
+          <p>We acknowledge the Traditional Custodians of the lands and waters where we live, learn and work. We pay respect to Elders past and present, and recognise the enduring connection of Aboriginal and Torres Strait Islander peoples to Country.</p>
+        </div>
+        <div class="footer__news">
+          <button class="link-underline-light" data-open-newsletter>Join our newsletter <svg class="icon" width="16" height="16"><use href="#i-mail"/></svg></button>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Joining Generations. Not-for-profit, for community.</p>
+        <div class="footer__links"><a href="#">Privacy</a><a href="#">Accessibility</a><a href="#">LinkedIn</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
