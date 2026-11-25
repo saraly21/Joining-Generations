@@ -62,16 +62,62 @@
           </form>
         </div>
 
-        <!-- Step 2: thank-you -->
+        <!-- Step 2: thank-you + optional 2-question survey -->
         <div id="newsletter-thanks-view" class="modal__thanks" hidden>
-          <span class="modal__tick"><svg class="icon" width="24" height="24"><use href="#i-check"/></svg></span>
-          <h2 class="modal__title modal__title--sm">You’re on the list.</h2>
-          <p class="modal__text">Thanks for joining us. Look out for a welcome note in your inbox.</p>
-          <button class="link-underline" id="newsletter-done" type="button">Continue exploring</button>
+          <span class="modal__tick"><svg class="icon" width="20" height="20"><use href="#i-check"/></svg></span>
+          <h2 class="modal__title modal__title--sm">Thanks! Help us get to know you</h2>
+          <p class="modal__text">You’re subscribed — look out for a welcome note in your inbox. These two quick questions are completely optional.</p>
+
+          <form id="newsletter-survey-form" class="modal__survey">
+            <fieldset class="modal__fieldset">
+              <legend class="modal__legend">1. Your areas of interest? <span>(optional — select all that apply)</span></legend>
+              <div class="modal__checks">
+                <label class="modal__check"><input type="checkbox" name="interest" value="Intergenerational Dinners" /> Intergenerational Dinners</label>
+                <label class="modal__check"><input type="checkbox" name="interest" value="Consulting" /> Consulting</label>
+                <label class="modal__check"><input type="checkbox" name="interest" value="Kinder Programs" /> Kinder Programs</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="modal__fieldset">
+              <legend class="modal__legend">2. How did you hear about us? <span>(optional)</span></legend>
+              <div class="modal__checks" data-single-check>
+                <label class="modal__check"><input type="checkbox" name="source" value="Search engine (Google, etc.)" /> Search engine (Google, etc.)</label>
+                <label class="modal__check"><input type="checkbox" name="source" value="Social media" /> Social media</label>
+                <label class="modal__check"><input type="checkbox" name="source" value="Friend, family or colleague" /> Friend, family or colleague</label>
+                <label class="modal__check"><input type="checkbox" name="source" value="Event or community group" /> Event or community group</label>
+                <label class="modal__check"><input type="checkbox" name="source" value="News or media" /> News or media</label>
+                <label class="modal__check"><input type="checkbox" name="source" value="Other" data-other-toggle /> Other (please tell us)</label>
+              </div>
+              <input id="newsletter-hear-other" class="modal__other-input" type="text" placeholder="Tell us where you heard about us…" hidden />
+            </fieldset>
+
+            <div class="modal__survey-actions">
+              <button class="btn btn--rust" type="submit">Save &amp; continue <svg class="icon" width="15" height="15"><use href="#i-arrow-right"/></svg></button>
+              <button class="link-underline" id="newsletter-done" type="button">Skip &amp; explore</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ============ PERSISTENT NEWSLETTER BANNER ============ -->
+  <aside class="newsletter-banner" id="newsletter-banner" aria-label="Newsletter sign-up" hidden>
+    <div class="newsletter-banner__inner container-wide">
+      <p class="newsletter-banner__text">
+        <span class="newsletter-banner__badge">Monthly note</span>
+        <span>Stories, upcoming events &amp; open resources — straight to your inbox.</span>
+      </p>
+      <div class="newsletter-banner__actions">
+        <button class="newsletter-banner__cta" type="button" data-open-newsletter>
+          Subscribe <svg class="icon" width="14" height="14"><use href="#i-arrow-right"/></svg>
+        </button>
+        <button class="newsletter-banner__close" id="newsletter-banner-close" type="button" aria-label="Dismiss newsletter banner">
+          <svg class="icon" width="16" height="16"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
